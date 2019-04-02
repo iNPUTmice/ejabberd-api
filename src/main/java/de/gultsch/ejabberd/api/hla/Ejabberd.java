@@ -57,6 +57,10 @@ public class Ejabberd {
     public void changePassword(String username, String host, String newPassword) throws RequestFailedException {
         api.executeWithSuccessOrThrow(new ChangePassword(username, host, newPassword));
     }
+    
+    public boolean addRosterItem(String localUser, String localServer, String user, String server, String nick, String group, String subs) throws RequestFailedException{
+    	return api.execute(new AddRosteritem(localUser, localServer, user, server, nick, group, subs));
+    }
 
     public boolean createSharedRosterGroup(String host, String group, String name) throws RequestFailedException {
         return api.execute(new SrgCreate(host, group, name));
